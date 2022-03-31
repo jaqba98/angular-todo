@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TaskModel } from './models/task.model';
+import { TasksStoreService } from './services/tasks-store.service';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private readonly tasksStoreSrv: TasksStoreService) {}
+  
   taskToDoTitle: string = 'Tasks to do';
   taskDoneTitle: string = 'Tasks done';
 
-  toDoTasks: Array<string> = ['1', '2', '3'];
-  doneTasks: Array<string> = ['4', '5'];
+  toDoTasks: Array<TaskModel> = this.tasksStoreSrv.getTasks().filter(task => !task.done);
+  doneTasks: Array<TaskModel> = this.tasksStoreSrv.getTasks().filter(task => task.done);
 }

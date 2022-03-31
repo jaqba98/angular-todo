@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TaskModel } from '../models/task.model';
 
 @Component({
   selector: 'app-todo-list',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TodoListComponent implements OnInit {
   @Input() title: string;
-  @Input() tasks: Array<string>;
+  @Input() tasks: Array<TaskModel>;
 
   constructor() { }
 
