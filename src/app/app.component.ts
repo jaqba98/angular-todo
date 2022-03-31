@@ -8,7 +8,20 @@ import { TasksStoreService } from './services/tasks-store.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private readonly tasksStoreSrv: TasksStoreService) {}
+  displayTest: string;
+  
+  constructor(private readonly tasksStoreSrv: TasksStoreService) {
+    tasksStoreSrv.test$.subscribe(item => {
+      this.displayTest = item;
+    });
+
+    let i = 0;
+
+    setInterval(() => {
+      i++;
+      tasksStoreSrv.test$.next(i.toString());
+    }, 1000);
+  }
   
   taskToDoTitle: string = 'Tasks to do';
   taskDoneTitle: string = 'Tasks done';

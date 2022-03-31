@@ -12,6 +12,8 @@ export class TasksStoreService {
     task2: { id: '2', title: 'Do shopping', createDate: new Date(), doneDate: new Date(), done: false }
   };
 
+  test$: BehaviorSubject<string> = new BehaviorSubject<string>('test');
+
   getTasks(): Array<TaskModel> {
     return Object.values(this.tasks);
   }
