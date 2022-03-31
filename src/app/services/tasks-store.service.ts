@@ -9,7 +9,7 @@ export class TasksStoreService {
   private tasks: TaskStoreModel = {
     task0: { id: '0', title: 'Learn Angular <3', createDate: new Date(), done: false },
     task1: { id: '1', title: 'Do homework', createDate: new Date(), done: false },
-    task2: { id: '2', title: 'Do shopping', createDate: new Date(), doneDate: new Date(), done: true }
+    task2: { id: '2', title: 'Do shopping', createDate: new Date(), doneDate: new Date(), done: false }
   };
 
   getTasks(): Array<TaskModel> {
