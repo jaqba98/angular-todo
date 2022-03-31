@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { TaskModel } from './models/task.model';
 import { TasksStoreService } from './services/tasks-store.service';
 
@@ -8,13 +9,12 @@ import { TasksStoreService } from './services/tasks-store.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  displayTest: string;
+  displayTest$: Observable<string>;
   
   constructor(private readonly tasksStoreSrv: TasksStoreService) {
-    tasksStoreSrv.test$.subscribe(item => {
-      this.displayTest = item;
-    });
-
+    this.displayTest$ = tasksStoreSrv.test$.pipe(
+      map(item => item)
+    );
     let i = 0;
 
     setInterval(() => {
