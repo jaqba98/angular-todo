@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
 import { TaskModel } from './models/task.model';
 import { TasksStoreService } from './services/tasks-store.service';
 
@@ -10,6 +10,8 @@ import { TasksStoreService } from './services/tasks-store.service';
 })
 export class AppComponent {
   displayTest$: Observable<string>;
+  toDoTasks: Observable<Array<TaskModel>>;
+  doneTasks: Array<TaskModel>;
   
   constructor(private readonly tasksStoreSrv: TasksStoreService) {
     this.displayTest$ = tasksStoreSrv.test$.pipe(
@@ -26,6 +28,6 @@ export class AppComponent {
   taskToDoTitle: string = 'Tasks to do';
   taskDoneTitle: string = 'Tasks done';
 
-  toDoTasks: Array<TaskModel> = this.tasksStoreSrv.getTasks().filter(task => !task.done);
-  doneTasks: Array<TaskModel> = this.tasksStoreSrv.getTasks().filter(task => task.done);
+  // toDoTasks: Array<TaskModel> = this.tasksStoreSrv.getTasks().filter(task => !task.done);
+  // doneTasks: Array<TaskModel> = this.tasksStoreSrv.getTasks().filter(task => task.done);
 }

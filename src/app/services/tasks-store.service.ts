@@ -6,15 +6,18 @@ import { TaskModel, TaskStoreModel } from '../models/task.model';
   providedIn: 'root'
 })
 export class TasksStoreService {
-  private tasks: TaskStoreModel = {
-    task0: { id: '0', title: 'Learn Angular <3', createDate: new Date(), done: false },
-    task1: { id: '1', title: 'Do homework', createDate: new Date(), done: false },
-    task2: { id: '2', title: 'Do shopping', createDate: new Date(), doneDate: new Date(), done: false }
-  };
+  private tasks$: BehaviorSubject<Array<TaskModel>> = new BehaviorSubject<Array<TaskModel>>([
+    { id: '0', title: 'Learn Angular', createDate: new Date(), done: false },
+    { id: '1', title: 'Do homework', createDate: new Date(), done: false },
+    { id: '2', title: 'Do shopping', createDate: new Date(), doneDate: new Date(), done: true } 
+  ]);
 
   test$: BehaviorSubject<string> = new BehaviorSubject<string>('test');
 
-  getTasks(): Array<TaskModel> {
-    return Object.values(this.tasks);
+  getTasks(): Observable<Array<TaskModel>> {
+    return this.tasks$;
+  }
+
+  addTask(newTask: TaskModel): void {
   }
 }

@@ -1,8 +1,8 @@
 <div>
   <app-header [title]="'To Do List'"></app-header>
   <app-task-form></app-task-form>
-  <app-todo-list [title]="taskToDoTitle" [tasks]="toDoTasks"></app-todo-list>
-  <app-todo-list [title]="taskDoneTitle" [tasks]="doneTasks"></app-todo-list>
+  <app-todo-list [header]="'Open tasks'" [isDone]="false"></app-todo-list>
+  <app-todo-list [header]="'Closed tasks'" [isDone]="true"></app-todo-list>
 </div>
 
 {{ displayTest$ | async }}
