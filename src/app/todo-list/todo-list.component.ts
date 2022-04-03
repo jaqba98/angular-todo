@@ -20,8 +20,8 @@ export class TodoListComponent {
     );
   }
 
-  remove(task: TaskModel): void {
-    console.log(task);
+  remove(taskId: string): void {
+    this.tasksStore.removeTask(taskId);
   }
 
   done(): void {}

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { TaskModel, TaskStoreModel } from '../models/task.model';
 
 @Injectable({
@@ -19,5 +19,17 @@ export class TasksStoreService {
   }
 
   addTask(newTask: TaskModel): void {
+  }
+
+  removeTask(taskId: string): void {
+    this.getTasks().pipe(
+        map(taskList => taskList.filter(task => task.id !== taskId))
+      )
+      .subscribe(taskList => this.tasks$.next(taskList))
+      .unsubscribe();
+  }
+
+  updateTask(task: TaskModel): void {
+
   }
 }
