@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
-import { TaskModel, TaskStoreModel } from '../models/task.model';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { TaskModel } from '../models/task.model';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class TasksStoreService {
   }
 
   addTask(newTask: TaskModel): void {
+    console.log(uuidv4());
   }
 
   removeTask(taskId: string): void {
