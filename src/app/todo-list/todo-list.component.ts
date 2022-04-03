@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { find, map, Observable } from 'rxjs';
 import { TaskModel } from '../models/task.model';
 import { TasksStoreService } from '../services/tasks-store.service';
 
@@ -24,5 +24,11 @@ export class TodoListComponent {
     this.tasksStore.removeTask(taskId);
   }
 
-  done(): void {}
+  done(taskId: string): void {
+    this.tasksStore.getTasks().pipe(
+      map(taskList => taskList.find(task => task.id === taskId))
+    ).subscribe(task => {
+      console.log(task);
+    }).unsubscribe();
+  }
 }

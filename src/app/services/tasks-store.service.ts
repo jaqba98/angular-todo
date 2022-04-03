@@ -22,11 +22,8 @@ export class TasksStoreService {
   }
 
   removeTask(taskId: string): void {
-    this.getTasks().pipe(
-        map(taskList => taskList.filter(task => task.id !== taskId))
-      )
-      .subscribe(taskList => this.tasks$.next(taskList))
-      .unsubscribe();
+    const taksList: Array<TaskModel> = this.tasks$.value.filter(task => task.id !== taskId);
+    this.tasks$.next(taksList);
   }
 
   updateTask(task: TaskModel): void {

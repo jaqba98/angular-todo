@@ -4,7 +4,7 @@
     <li *ngFor="let task of taskList$ | async">
       {{ task.title }}
       <button (click)="remove(task.id)">Remove</button>
-      <button (click)="done()">Done</button>
+      <button (click)="done(task.id)">Done</button>
     </li>
   </ul>
 </div>
