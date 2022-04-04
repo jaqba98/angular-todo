@@ -20,7 +20,9 @@ export class TasksStoreService {
   }
 
   addTask(newTask: TaskModel): void {
-    console.log(uuidv4());
+    const tasks: Array<TaskModel> = this.tasks$.value;
+    tasks.push(newTask);
+    this.tasks$.next(tasks);
   }
 
   removeTask(taskId: string): void {

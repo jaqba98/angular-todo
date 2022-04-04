@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TaskModel } from '../models/task.model';
 import { TasksStoreService } from '../services/tasks-store.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-task-form',
@@ -14,10 +15,9 @@ export class TaskFormComponent {
 
   addTask(): void {
     const newTask: TaskModel = {
-      id: '5',
+      id: uuidv4(),
       title: this.taskTitle,
       createDate: new Date(),
-      doneDate: undefined,
       done: false
     }
     this.taskTitle = '';
