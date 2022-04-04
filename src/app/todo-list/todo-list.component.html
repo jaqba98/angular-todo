@@ -5,7 +5,7 @@
       {{ task.title }}
       <div *ngIf="task.done; else options"></div>
       <ng-template #options>
-        <button (click)="remove(task.id)">Remove</button>
+        <button pButton type="button" label="Remove" class="p-button-danger" (click)="remove(task.id)"></button>
         <button (click)="done(task.id)">Done</button>
       </ng-template>
     </li>

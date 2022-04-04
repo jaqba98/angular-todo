@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { find, map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { TaskModel } from '../models/task.model';
 import { TasksStoreService } from '../services/tasks-store.service';
 
