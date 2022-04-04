@@ -3,8 +3,11 @@
   <ul>
     <li *ngFor="let task of taskList$ | async">
       {{ task.title }}
-      <button (click)="remove(task.id)">Remove</button>
-      <button (click)="done(task.id)">Done</button>
+      <div *ngIf="task.done; else options"></div>
+      <ng-template #options>
+        <button (click)="remove(task.id)">Remove</button>
+        <button (click)="done(task.id)">Done</button>
+      </ng-template>
     </li>
   </ul>
 </div>
