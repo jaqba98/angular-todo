@@ -25,10 +25,6 @@ export class TodoListComponent {
   }
 
   done(taskId: string): void {
-    this.tasksStore.getTasks().pipe(
-      map(taskList => taskList.find(task => task.id === taskId))
-    ).subscribe(task => {
-      console.log(task);
-    }).unsubscribe();
+    this.tasksStore.finishTask(taskId);
   }
 }

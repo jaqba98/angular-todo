@@ -30,7 +30,10 @@ export class TasksStoreService {
     this.tasks$.next(taksList);
   }
 
-  updateTask(task: TaskModel): void {
-
+  finishTask(taskId: string): void {
+    const taksList: Array<TaskModel> = this.tasks$.value.map(task => task.id === taskId ?
+      { ...task, done: true } : task
+    );
+    this.tasks$.next(taksList);
   }
 }
