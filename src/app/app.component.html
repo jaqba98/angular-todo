@@ -8,3 +8,22 @@
   <app-todo-list [header]="'Open tasks'" [isDone]="false"></app-todo-list>
   <app-todo-list [header]="'Closed tasks'" [isDone]="true"></app-todo-list>
 </div>
+
+<p-table [value]="products">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Quantity</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+      <tr>
+          <td>{{product.code}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.category}}</td>
+          <td>{{product.quantity}}</td>
+      </tr>
+  </ng-template>
+</p-table>

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
 
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
