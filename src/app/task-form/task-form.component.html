@@ -1,4 +1,7 @@
-<div>
-  <input type="text" [(ngModel)]="taskTitle">
-  <button (click)="addTask()">Add task</button>
+<div id="taskForm">
+  <span class="p-float-label">
+    <input id="float-input" type="text" pInputText [(ngModel)]="taskTitle"> 
+    <label for="float-input">Task name</label>
+  </span>
+  <button pButton type="button" label="Add task" (click)="addTask()"></button>
 </div>

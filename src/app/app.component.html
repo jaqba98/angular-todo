@@ -1,8 +1,10 @@
 <div>
   <app-header [title]="'To Do List'"></app-header>
+</div>
+<div>
   <app-task-form></app-task-form>
+</div>
+<div id="tasksLists">
   <app-todo-list [header]="'Open tasks'" [isDone]="false"></app-todo-list>
   <app-todo-list [header]="'Closed tasks'" [isDone]="true"></app-todo-list>
 </div>
-
-{{ displayTest$ | async }}

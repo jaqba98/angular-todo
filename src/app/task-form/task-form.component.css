@@ -1,0 +1,9 @@
+#taskForm {
+  display: flex;
+  justify-content: center;
+}
+
+#float-input {
+  margin-right: 5px;
+  width: 500px;
+}
