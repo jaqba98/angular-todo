@@ -1,3 +1,7 @@
 #tasksLists {
-  display: flex;
+    display: flex;
+}
+
+#tasksLists > * {
+    flex: 1;
 }

@@ -1,0 +1,6 @@
+/* Reset default css styles */
+
+body, h1 {
+    margin: auto;
+    padding: 0px;
+}

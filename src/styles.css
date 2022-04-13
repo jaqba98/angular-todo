@@ -1,10 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
+  background-color: whitesmoke;
+}
+
+#tasksLists {
+  margin: auto;
+  width: 960px;
+}
+
+#tasksLists > div {
   display: flex;
-  justify-content: center;
 }

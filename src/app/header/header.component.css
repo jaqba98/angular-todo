@@ -1,0 +1,14 @@
+header {
+    padding: 20px;
+    align-items: center;
+    height: calc(100px - 20px);
+    background-color: #1C1C1E;
+}
+
+h1 {
+    float: left;
+    font-weight: normal;
+    color: whitesmoke;
+}
+
+div { float: right; }
