@@ -1,4 +1,4 @@
-<div id="taskForm">
-  <input type="text" [(ngModel)]="taskTitle">
-  <button type="button" (click)="addTask()">Add task</button>
-</div>
+<form (submit)="addNewTask()">
+    <input type="text" placeholder="Task name" [(ngModel)]="taskTitle" [ngModelOptions]="{standalone: true}">
+    <input type="submit" value="Add">
+</form>

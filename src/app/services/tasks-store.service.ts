@@ -19,7 +19,13 @@ export class TasksStoreService {
     return this.tasks$;
   }
 
-  addTask(newTask: TaskModel): void {
+  addTask(taskTitle: string): void {
+    const newTask: TaskModel = {
+      id: uuidv4(),
+      title: taskTitle,
+      createDate: new Date(),
+      done: false
+    }
     const tasks: Array<TaskModel> = this.tasks$.value;
     tasks.push(newTask);
     this.tasks$.next(tasks);

@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
-import { TaskModel } from '../models/task.model';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { TasksStoreService } from '../services/tasks-store.service';
-import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-task-form',
@@ -11,16 +9,22 @@ import { v4 as uuidv4 } from 'uuid';
 export class TaskFormComponent {
   taskTitle: string;
 
+  @Output()
+  hide = new EventEmitter<boolean>();
+
   constructor(private readonly tasksStoreSrv: TasksStoreService) {}
 
-  addTask(): void {
-    const newTask: TaskModel = {
-      id: uuidv4(),
-      title: this.taskTitle,
-      createDate: new Date(),
-      done: false
+  addNewTask(): void {
+    if (this.newTaskIsEmpty(this.taskTitle)) {
+      this.hide.emit(false);
+      return;
     }
+    this.tasksStoreSrv.addTask(this.taskTitle);
     this.taskTitle = '';
-    this.tasksStoreSrv.addTask(newTask);
+    this.hide.emit(true);
+  }
+
+  private newTaskIsEmpty(taskTitle: string): boolean {
+    return taskTitle === undefined || taskTitle === null || taskTitle === '';
   }
 }

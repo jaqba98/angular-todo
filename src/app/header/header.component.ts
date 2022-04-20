@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Input() title: string;
+  @Output() hide: boolean = true;
+
+  err(hide: boolean): void {
+    this.hide = hide;
+  }
 }
