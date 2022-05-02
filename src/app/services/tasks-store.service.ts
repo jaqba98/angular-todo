@@ -6,40 +6,29 @@ import { v4 as uuidv4 } from 'uuid';
 @Injectable({
   providedIn: 'root'
 })
+/* Store to manage all tasks */
 export class TasksStoreService {
-  private tasks$: BehaviorSubject<Array<TaskModel>> = new BehaviorSubject<Array<TaskModel>>([
-    { id: '0', title: 'Learn Angular', createDate: new Date(), done: false },
-    { id: '1', title: 'Do homework', createDate: new Date(), done: false },
-    { id: '2', title: 'Do shopping', createDate: new Date(), doneDate: new Date(), done: true } 
-  ]);
-
-  test$: BehaviorSubject<string> = new BehaviorSubject<string>('test');
+  private tasks$: BehaviorSubject<Array<TaskModel>> = new BehaviorSubject<Array<TaskModel>>([]);
 
   getTasks(): Observable<Array<TaskModel>> {
     return this.tasks$;
   }
 
-  addTask(taskTitle: string): void {
-    const newTask: TaskModel = {
-      id: uuidv4(),
-      title: taskTitle,
-      createDate: new Date(),
-      done: false
-    }
-    const tasks: Array<TaskModel> = this.tasks$.value;
-    tasks.push(newTask);
-    this.tasks$.next(tasks);
+  addTask(title: string): void {
+    const lastTasks: Array<TaskModel> = this.tasks$.value;
+    lastTasks.push({id: uuidv4(), title, createDate: new Date(), done: false});
+    this.tasks$.next(lastTasks);
   }
 
-  removeTask(taskId: string): void {
-    const taksList: Array<TaskModel> = this.tasks$.value.filter(task => task.id !== taskId);
-    this.tasks$.next(taksList);
+  removeTask(id: string): void {
+    const currentTasks: Array<TaskModel> = this.tasks$.value.filter(task => task.id !== id);
+    this.tasks$.next(currentTasks);
   }
 
-  finishTask(taskId: string): void {
-    const taksList: Array<TaskModel> = this.tasks$.value.map(task => task.id === taskId ?
-      { ...task, done: true } : task
+  finishTask(id: string): void {
+    const currentTasks: Array<TaskModel> = this.tasks$.value.map(
+      task => task.id === id ? { ...task, doneDate: new Date(), done: true } : task
     );
-    this.tasks$.next(taksList);
+    this.tasks$.next(currentTasks);
   }
 }
