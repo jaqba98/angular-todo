@@ -1,14 +1,4 @@
-#error {
-    position: absolute;
-    left: 0;
-    right: 0px;
-    top: 60px;
-    background-color: rgba(255, 0, 0, 0.98);
-    color: white;
-    padding: 5px 15px;
-    border: none;
-}
-
+/* all devices */
 input {
     padding: 10px;
     outline: none;
@@ -17,12 +7,14 @@ input {
 }
 
 input[type="text"] {
-    background-color: lightgray;
-    color: grey;
+    background-color: #443c80;
+    color: white;
 }
 
+input[type="text"]::placeholder { color: lightgray; }
+
 input[type="submit"] {
-    background-color: grey;
+    background-color: #6b5ece;
     color: white;
     cursor: pointer;
 }

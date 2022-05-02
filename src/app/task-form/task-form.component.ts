@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TasksStoreService } from '../services/tasks-store.service';
 
 @Component({
@@ -6,25 +6,29 @@ import { TasksStoreService } from '../services/tasks-store.service';
   templateUrl: './task-form.component.html',
   styleUrls: ['./task-form.component.css']
 })
-export class TaskFormComponent {
+export class TaskFormComponent implements OnInit {
+  @Output()
+  formError = new EventEmitter<boolean>();
+
   taskTitle: string;
 
-  @Output()
-  hide = new EventEmitter<boolean>();
+  constructor(private readonly tasksStore: TasksStoreService) {}
 
-  constructor(private readonly tasksStoreSrv: TasksStoreService) {}
-
-  addNewTask(): void {
-    if (this.newTaskIsEmpty(this.taskTitle)) {
-      this.hide.emit(false);
-      return;
-    }
-    this.tasksStoreSrv.addTask(this.taskTitle);
-    this.taskTitle = '';
-    this.hide.emit(true);
+  ngOnInit(): void {
+    this.clearTaskTitle();
   }
 
-  private newTaskIsEmpty(taskTitle: string): boolean {
-    return taskTitle === undefined || taskTitle === null || taskTitle === '';
+  addNewTask(): void {
+    if (this.taskTitle === '') {
+      this.formError.emit(true);
+      return;
+    }
+    this.tasksStore.addTask(this.taskTitle);
+    this.clearTaskTitle();
+    this.formError.emit(false);
+  }
+
+  private clearTaskTitle(): void {
+    this.taskTitle = '';
   }
 }

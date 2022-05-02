@@ -1,14 +1,19 @@
-import { Component, Output } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
-  @Output() hide: boolean = true;
+export class HeaderComponent implements OnInit {
+  @Output()
+  isError: boolean;
 
-  err(hide: boolean): void {
-    this.hide = hide;
+  ngOnInit(): void {
+    this.handleFormError(false);
+  }
+
+  handleFormError(errorStatus: boolean): void {
+    this.isError = errorStatus;
   }
 }
