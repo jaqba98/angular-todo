@@ -1,7 +1,7 @@
 <main>
   <app-header></app-header>
-  <div id="tasksLists">
-    <app-todo-list [header]="'Open tasks'" [isDone]="false"></app-todo-list>
-    <app-todo-list [header]="'Closed tasks'" [isDone]="true"></app-todo-list>
-  </div>
+  <section>
+    <app-todo-list [header]="'Open Tasks'" [isDone]="false"></app-todo-list>
+    <app-todo-list id="doneTasks" [header]="'Done Tasks'" [isDone]="true"></app-todo-list>
+  </section>
 </main>

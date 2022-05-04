@@ -1,10 +1,22 @@
-#tasksLists {
+/* all devices */
+section {
     display: flex;
-    height: calc(100vh - 60px);
-    overflow-y: auto;
-    background-color: purple;
+    padding: 0px 10px;
 }
 
-#tasksLists > * {
-    flex: 1;
+app-todo-list { flex: 1; }
+
+/* mobile device */
+@media screen and (max-width: 767px) {
+    app-todo-list { flex: 2; }
+
+    #doneTasks { flex: 1; }
+}
+
+/* desktop device */
+@media screen and (min-width: 1024px) {
+    section {
+        margin: auto;
+        width: 960px;
+    }
 }

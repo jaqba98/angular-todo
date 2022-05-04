@@ -1,14 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
-body {
-  background-color: #EEEDDE;
-}
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
-#tasksLists {
+body, h1, input, p {
+  font-family: 'Rubik', sans-serif;
   margin: auto;
-  width: 960px;
+  padding: 0px;
 }
 
-#tasksLists > div {
-  display: flex;
+body {
+  background-color: #473f8b;
 }
