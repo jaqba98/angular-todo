@@ -6,13 +6,6 @@ section {
 
 app-todo-list { flex: 1; }
 
-/* mobile device */
-@media screen and (max-width: 767px) {
-    app-todo-list { flex: 2; }
-
-    #doneTasks { flex: 1; }
-}
-
 /* desktop device */
 @media screen and (min-width: 1024px) {
     section {

@@ -1,14 +1,20 @@
-<div id="todoList">
-  <h2>{{ header }}</h2>
+<section>
+  <h2>{{header}}</h2>
   <ul>
     <li *ngFor="let task of taskList$ | async">
-      <span>{{ task.title }}</span>
-      <div *ngIf="task.done; else options"></div>
-      <ng-template #options id="buttons">
-        <button pButton type="button" label="?" class="p-button-warning" (click)="remove(task.id)"></button>
-        <button pButton type="button" label="X" class="p-button-danger" (click)="remove(task.id)"></button>
-        <button pButton type="button" label="&#x2713;" class="p-button-success" (click)="done(task.id)"></button>
+      <div *ngIf="task.done; then optionsDone; else optionsCreated"></div>
+      <ng-template #optionsDone>
+        <p>{{ task.title }}</p>
+        <p>Done: {{ task.doneDate | date: "MMM d, y, h:mm:ss a" }}</p>
+      </ng-template>
+      <ng-template #optionsCreated>
+        <div>
+          <p>{{ task.title }}</p>
+          <button (click)="remove(task.id)">&#10005;</button>
+          <button (click)="done(task.id)">&#x2713;</button>
+        </div>
+        <div>Created: {{ task.createDate | date: "MMM d, y, h:mm:ss a" }}</div>
       </ng-template>
     </li>
   </ul>
-</div>
+</section>
