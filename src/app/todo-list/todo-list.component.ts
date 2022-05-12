@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { TaskModel } from '../models/task.model';
 import { TasksStoreService } from '../services/tasks-store.service';
@@ -8,23 +8,26 @@ import { TasksStoreService } from '../services/tasks-store.service';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent {
+export class TodoListComponent implements OnInit {
   @Input() header: string;
   @Input() isDone: boolean;
 
   taskList$: Observable<Array<TaskModel>>;
 
-  constructor(private readonly tasksStore: TasksStoreService) {
-    this.taskList$ = this.tasksStore.getTasks().pipe(
-      map(taskList => taskList.filter(task => task.done === this.isDone))
+  constructor(private readonly tasksStoreService: TasksStoreService) {
+  }
+
+  ngOnInit(): void {
+    this.taskList$ = this.tasksStoreService.getTasks().pipe(
+      map(taskList => taskList.filter(task => task.done === this.isDone).reverse())
     );
   }
 
   remove(taskId: string): void {
-    this.tasksStore.removeTask(taskId);
+    this.tasksStoreService.removeTask(taskId);
   }
 
   done(taskId: string): void {
-    this.tasksStore.finishTask(taskId);
+    this.tasksStoreService.finishTask(taskId);
   }
 }

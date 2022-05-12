@@ -2,8 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
-body, h1, input, p, button {
+body, h1, input, p, button, ul {
     font-family: 'Rubik', sans-serif;
     margin: auto;
     padding: 0px;
+    list-style: none;
 }
